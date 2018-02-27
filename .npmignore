@@ -1,4 +1,4 @@
-docs
 src
+config
 .babelrc
-webpack.config.js
+.eslintrc
