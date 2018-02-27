@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button to be clickable 1`] = `
+<button
+  className="Button"
+  onClick={[Function]}
+>
+  <span
+    className="label"
+  >
+    Awesome button
+  </span>
+</button>
+`;

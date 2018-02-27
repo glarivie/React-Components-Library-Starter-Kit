@@ -1,6 +1,6 @@
 {
   "name": "React-Library-Stater-Kit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Boilerplate to building a React components library for NPM",
   "main": "build/bundle.js",
   "repository": "https://github.com/hqro/React-Library-Stater-Kit.git",
@@ -43,6 +43,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-test-renderer": "^16.2.0",
     "webpack": "^4.0.1",
     "webpack-cli": "^2.0.9"
   },
