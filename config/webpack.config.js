@@ -1,4 +1,5 @@
 const path = require('path')
+const PrepackWebpackPlugin = require('prepack-webpack-plugin').default
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -41,7 +42,7 @@ module.exports = {
         loader: require.resolve('postcss-loader'),
         options: {
           ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-          sourceMap: true,
+          sourceMap: process.env.NODE_ENV === 'production',
           plugins: () => [
             require('postcss-flexbugs-fixes'),
             require('postcss-import')({
@@ -54,6 +55,12 @@ module.exports = {
       }],
     }],
   },
+  plugins: [
+    new PrepackWebpackPlugin({
+      sourceMaps: process.env.NODE_ENV === 'production',
+      timeout: 60000,
+    }),
+  ],
   externals: {
     'react': 'commonjs react' // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
   }
