@@ -5153,7 +5153,7 @@ postcss-color-hwb@^3.0.0:
     postcss-message-helpers "^2.0.0"
     reduce-function-call "^1.0.2"
 
-postcss-color-mod-function@^2.4.1:
+postcss-color-mod-function@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/postcss-color-mod-function/-/postcss-color-mod-function-2.4.2.tgz#bdf408f152bc3201517a4c38b7eb5cd2996114fb"
   dependencies:
@@ -5533,8 +5533,8 @@ postcss-page-break@^1.0.0:
     postcss "^6.0.16"
 
 postcss-preset-env@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-3.2.1.tgz#49a2a25d534a4bb6ae782874722e195c0d5b8fea"
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-3.2.2.tgz#1af4bb9e67dfb8c3b02fca5f622bf78e1a544e35"
   dependencies:
     browserslist "^3.1.1"
     caniuse-lite "^1.0.30000810"
@@ -5543,7 +5543,7 @@ postcss-preset-env@^3.2.1:
     postcss-apply "^0.8.0"
     postcss-attribute-case-insensitive "^2.0.0"
     postcss-color-hex-alpha "^3.0.0"
-    postcss-color-mod-function "^2.4.1"
+    postcss-color-mod-function "^2.4.2"
     postcss-color-rebeccapurple "^3.0.0"
     postcss-color-rgb "^2.0.0"
     postcss-custom-media "^6.0.0"
