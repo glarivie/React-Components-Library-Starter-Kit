@@ -1,4 +1,4 @@
-# React-Library-Stater-Kit
+# React-Component-Library-Starter-Kit
 
 Boilerplate to building a React components library for NPM
 
@@ -7,8 +7,8 @@ Boilerplate to building a React components library for NPM
 #### Setup you development environement
 
 ```bash
-git clone git@github.com:hqro/React-Library-Stater-Kit.git
-cd React-Library-Stater-Kit
+git clone git@github.com:hqro/React-Component-Library-Starter-Kit.git
+cd React-Component-Library-Starter-Kit
 yarn install
 ```
 
@@ -16,7 +16,7 @@ yarn install
 
 ```bash
 cd ..
-mv React-Library-Stater-Kit my-components-library
+mv React-Component-Library-Starter-Kit my-components-library
 cd my-components-library
 rm -Rvf .git
 git init
