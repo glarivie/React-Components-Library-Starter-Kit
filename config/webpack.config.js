@@ -1,60 +1,78 @@
 const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+const { NODE_ENV } = process.env
+
+const resolve = pathname => path.resolve(__dirname, pathname)
+const nodeModule = name => require.resolve(name)
+
+const extractSass = new ExtractTextPlugin({
+  filename: '[name].css',
+  disable: Object.is(NODE_ENV, 'development'),
+})
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
-  context: path.resolve(__dirname, '../src'),
-  entry: [path.resolve(__dirname, '../src/index.js')],
+  devtool: Object.is(NODE_ENV, 'development') ? 'cheap-module-source-map' : false,
+  stats: { children: false },
+  context: resolve('../src'),
+  entry: {
+    main: resolve('../src/index.js'),
+    vendor: [nodeModule('react'), nodeModule('react-dom')],
+  },
   output: {
-    pathinfo: true, // Add /* filename */ comments to generated require()s in the output.
-    path: path.resolve(__dirname, '../dist'),
-    filename: 'bundle.js',
+    path: resolve('../dist'),
+    filename: '[name].js',
     libraryTarget: 'commonjs2',
   },
   resolve: {
-    modules: [path.resolve(__dirname, '../node_modules')],
+    modules: [resolve('../node_modules')],
     extensions: ['.web.js', '.js', '.json', '.jsx'],
     alias: {
-      '@': path.resolve(__dirname, '../src'),
-      components: path.resolve(__dirname, '../src/components'),
-      constants: path.resolve(__dirname, '../src/constants'),
-      assets: path.resolve(__dirname, '../src/assets'),
+      '@': resolve('../src'),
+      components: resolve('../src/components'),
+      constants: resolve('../src/constants'),
+      helpers: resolve('../src/helpers'),
+      assets: resolve('../src/assets'),
+      styles: resolve('../src/styles'),
     },
   },
   module: {
-    rules: [{
-      test: /\.(js|jsx)$/,
-      include: path.resolve(__dirname, '../src'),
-      exclude: /(node_modules|bower_components|dist)/,
-      use: require.resolve('babel-loader'),
-    }, {
-      test: /\.css$/,
-      include: path.resolve(__dirname, '../src'),
-      exclude: /(node_modules|bower_components|dist)/,
-      use: [{
-        loader: require.resolve('css-loader'),
-        options: {
-          importLoaders: 1, // User postcss-loader to handle @import()
-          modules: true, // Enable CSS Modules
-          localIdentName:'[local]_[hash:base64:5]',
-        },
-      }, {
-        loader: require.resolve('postcss-loader'),
-        options: {
-          ident: 'postcss', // https://webpack.js.org/guides/migrating/#complex-options
-          sourceMap: true,
-          plugins: () => [
-            require('postcss-flexbugs-fixes'),
-            require('postcss-import')({
-              root: path.resolve(__dirname, '../src/assets'),
-            }),
-            require('postcss-cssnext')(),
-            require('postcss-preset-env')(),
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        include: resolve('../src'),
+        exclude: /(node_modules|bower_components|dist)/,
+        use: nodeModule('babel-loader'),
+      },
+      {
+        test: /\.s?css$/,
+        include: resolve('../src'),
+        exclude: /(node_modules|bower_components|dist)/,
+        use: extractSass.extract({
+          use: [
+            {
+              loader: nodeModule('css-loader'),
+              options: {
+                modules: true, // Enable CSS Modules
+                localIdentName: '[local]_[hash:base64:5]',
+              },
+            },
+            { loader: nodeModule('sass-loader') },
           ],
-        },
-      }],
-    }],
+          fallback: nodeModule('style-loader'), // Use style-loader in development
+        }),
+      },
+      {
+        test: /\.(png|svg)$/,
+        include: resolve('../src'),
+        exclude: /(node_modules|bower_components|dist)/,
+        loader: nodeModule('url-loader'),
+      },
+    ],
   },
+  plugins: [extractSass],
   externals: {
-    'react': 'commonjs react' // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
-  }
+    // Use the React dependency of our parent-testing-project instead of using our own React.
+    react: 'commonjs react',
+  },
 }

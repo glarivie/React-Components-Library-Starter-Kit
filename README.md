@@ -1,4 +1,4 @@
-# React-Component-Library-Starter-Kit
+# React-Components-Library-Starter-Kit
 
 Boilerplate to building a React components library for NPM
 
@@ -7,8 +7,8 @@ Boilerplate to building a React components library for NPM
 #### Setup you development environement
 
 ```bash
-git clone git@github.com:hqro/React-Component-Library-Starter-Kit.git
-cd React-Component-Library-Starter-Kit
+git clone git@github.com:hqro/React-Components-Library-Starter-Kit.git
+cd React-Components-Library-Starter-Kit
 yarn install
 ```
 
@@ -16,7 +16,7 @@ yarn install
 
 ```bash
 cd ..
-mv React-Component-Library-Starter-Kit my-components-library
+mv React-Components-Library-Starter-Kit my-components-library
 cd my-components-library
 rm -Rvf .git
 git init
@@ -32,7 +32,6 @@ yarn start
 ```
 
 `webpack` now wath for file changes in `src/components` folder. Each time you add a new component, it will compile your source files again. Don't forget to export your components on `index.js` file.
-
 
 ## How to test ?
 
@@ -57,10 +56,7 @@ import { Button } from 'my-components-library'
 
 const App = () => (
   <div className="App">
-    <Button
-      label="Awesome button"
-      onClick={() => console.log('click')}
-    />
+    <Button label="Awesome button" onClick={() => console.log('click')} />
   </div>
 )
 ```

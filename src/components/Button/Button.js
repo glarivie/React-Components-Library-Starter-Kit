@@ -3,15 +3,12 @@ import PropTypes from 'prop-types'
 
 import styles from './Button.css'
 
-const Button = ({ onClick, label }) =>
-  <button
-    className={styles.Button}
-    onClick={onClick}
-  >
-    <span className={styles.label}>
-      {label}
-    </span>
+const Button = ({ onClick, label }) => (
+  <button className={styles.Button} onClick={onClick}>
+    <img src={require('./x.svg')} alt="x" />
+    <span className={styles.label}>{label}</span>
   </button>
+)
 
 Button.defaultProps = {
   onClick: null,

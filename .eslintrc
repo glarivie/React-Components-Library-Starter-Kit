@@ -1,13 +1,30 @@
-{
-  "extends": ["react-app"],
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": false,
-    "codeFrame": false
-  },
-  "rules": {
-    "jsx-a11y/href-no-hash": "off",
-    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }]
-  },
-}
+env:
+  es6: true
+  commonjs: true
+  jest: true
+  browser: true
+
+parserOptions:
+  sourceType: "module"
+  allowImportExportEverywhere: false
+  codeFrame: false
+
+extends: react-app
+parser: babel-eslint
+rules:
+  semi: ["error", "never"]
+  new-cap: ["warn", { "newIsCap": true }]
+  curly: ["error", "multi"]
+  max-len: ["warn", { "code": 100, "tabWidth": 2 }]
+  arrow-parens: ["warn", "as-needed"]
+  no-confusing-arrow: "off"
+  global-require: "warn"
+  no-await-in-loop: "error"
+  space-before-function-paren: ["warn", "always"]
+  no-underscore-dangle: "off"
+  # no-restricted-syntax: "off"
+  import/prefer-default-export: "warn"
+  import/extensions: [".js", ".jsx"]
+
+  jsx-a11y/href-no-hash: "off"
+  jsx-a11y/anchor-is-valid: ["warn", { "aspects": ["invalidHref"] }]
