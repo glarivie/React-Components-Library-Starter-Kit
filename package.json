@@ -1,15 +1,15 @@
 {
-  "name": "React-Library-Stater-Kit",
-  "version": "1.0.2",
+  "name": "React-Components-Library-Starter-Kit",
+  "version": "1.1.1",
   "description": "Boilerplate to building a React components library for NPM",
-  "main": "build/bundle.js",
-  "repository": "https://github.com/hqro/React-Library-Stater-Kit.git",
+  "main": "dist/index.js",
+  "repository": "https://github.com/hqro/React-Components-Library-Starter-Kit.git",
   "author": "Guillaume L. <glarivie@student.42.fr>",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "webpack --watch --config config/webpack.config.js --mode development",
-    "build": "webpack --config config/webpack.config.js --mode production",
+    "start": "parcel watch src/index.js",
+    "build": "parcel build src/index.js --detailed-report",
     "test": "jest --verbose --forceExit",
     "lint": "eslint src/**; exit 0",
     "prepare": "npm run build"
@@ -35,6 +35,9 @@
     "eslint-plugin-react": "^7.7.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.2",
+    "node-sass": "^4.9.0",
+    "parcel-bundler": "^1.8.1",
+    "parcel-plugin-url-loader": "^1.2.4",
     "postcss-cssnext": "^3.1.0",
     "postcss-flexbugs-fixes": "^3.3.0",
     "postcss-import": "^11.1.0",
@@ -57,5 +60,8 @@
     "moduleNameMapper": {
       "^.+\\.(css|less|scss)$": "identity-obj-proxy"
     }
+  },
+  "dependencies": {
+    "components": "^0.1.0"
   }
 }

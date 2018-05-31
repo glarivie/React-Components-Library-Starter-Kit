@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './Button.css'
+import styles from './Button.scss'
+import x from './x.svg'
 
 const Button = ({ onClick, label }) =>
   <button
     className={styles.Button}
     onClick={onClick}
   >
+    <img src={x} alt="x" />
     <span className={styles.label}>
       {label}
     </span>
